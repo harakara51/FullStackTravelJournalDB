@@ -20,7 +20,9 @@ import javax.persistence.Table;
 @NamedQuery(name = "User.getUserByName", query =
 		"select u from User u where u.username= :name"),
 @NamedQuery(name = "User.getUserByPassword", query =
-		"select u from User u where u.password =:password")
+		"select u from User u where u.password =:password"),
+@NamedQuery(name = "User.getALLUSER", query =
+		"select u from User u ")
 })
 public class User
 {
@@ -137,6 +139,20 @@ public class User
 	public void setTrips(Trip trips)
 	{
 		this.Trips.add(trips);
+	}
+	/**
+	 * @return the is_admin
+	 */
+	public Boolean getIs_admin()
+	{
+		return is_admin;
+	}
+	/**
+	 * @param is_admin the is_admin to set
+	 */
+	public void setIs_admin(Boolean is_admin)
+	{
+		this.is_admin = is_admin;
 	}
 
 	

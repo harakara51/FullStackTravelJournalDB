@@ -18,7 +18,7 @@ public class Trip
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String tripName;
+	
 	@ManyToOne(optional = false)
 	 @JoinColumn(name = "user_id", nullable = false)
 	private User user_id;

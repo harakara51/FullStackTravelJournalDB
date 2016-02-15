@@ -45,10 +45,10 @@ public class Location
 	private String locationLong;
 	@Column (name ="location_lat")
 	private String locationLat;
-	 @Temporal(TemporalType.DATE)
+//	 @Temporal(TemporalType.DATE)
 	@Column (name ="date_started")
 	private String dateStarted;
-	 @Temporal(TemporalType.DATE)
+//	 @Temporal(TemporalType.DATE)
 	@Column (name ="date_ended")
 	private String datEnded;
 	
