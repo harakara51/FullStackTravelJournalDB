@@ -26,7 +26,7 @@ public class Trip
 	private Collection<Location> Locations;
 	private String trip_name;
 	private String date_started;
-	private String date_ended;
+	private String date_ended; 
 	
 	public Trip()
 	{
@@ -43,6 +43,16 @@ public class Trip
 		this.id = id;
 		this.user_id = user_id;
 	}
+	
+	public Trip(User user_id, String trip_name, String date_started, String date_ended)
+	{
+		super();
+		this.user_id = user_id;
+		this.trip_name = trip_name;
+		this.date_started = date_started;
+		this.date_ended = date_ended;
+	}
+	
 
 	/**
 	 * @return the id
@@ -76,7 +86,72 @@ public class Trip
 	{
 		return "trip [id=" + id + ", user_id=" + user_id + "]";
 	}
-	
+
+	/**
+	 * @return the trip_name
+	 */
+	public String getTrip_name()
+	{
+		return trip_name;
+	}
+
+	/**
+	 * @return the date_started
+	 */
+	public String getDate_started()
+	{
+		return date_started;
+	}
+
+	/**
+	 * @return the date_ended
+	 */
+	public String getDate_ended()
+	{
+		return date_ended;
+	}
+
+	/**
+	 * @param trip_name the trip_name to set
+	 */
+	public void setTrip_name(String trip_name)
+	{
+		this.trip_name = trip_name;
+	}
+
+	/**
+	 * @param date_started the date_started to set
+	 */
+	public void setDate_started(String date_started)
+	{
+		this.date_started = date_started;
+	}
+
+	/**
+	 * @param date_ended the date_ended to set
+	 */
+	public void setDate_ended(String date_ended)
+	{
+		this.date_ended = date_ended;
+	}
+
+	/**
+	 * @return the locations
+	 */
+	public Collection<Location> getLocations()
+	{
+		return Locations;
+	}
+
+	/**
+	 * @param locations the locations to set
+	 */
+	public void setLocations(Collection<Location> locations)
+	{
+		Locations = locations;
+	}
+
+
 	
 	
 	

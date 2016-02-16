@@ -63,6 +63,24 @@ public class Location
 		this.id = id;
 		this.trip_id = trip_id;
 	}
+	
+	public Location(String locationName, String dateStarted, String datEnded)
+	{
+	
+		
+		this.locationName = locationName;
+		this.dateStarted = dateStarted;
+		this.datEnded = datEnded;
+	}
+	
+	public Location(Trip trip_id, String locationName, String dateStarted, String datEnded)
+	{
+	
+		this.trip_id = trip_id;
+		this.locationName = locationName;
+		this.dateStarted = dateStarted;
+		this.datEnded = datEnded;
+	}
 
 	/**
 	 * @return the id
@@ -96,6 +114,88 @@ public class Location
 	{
 		return "location [id=" + id + ", trip_id=" + trip_id + "]";
 	}
+
+	/**
+	 * @return the locationName
+	 */
+	public String getLocationName()
+	{
+		return locationName;
+	}
+
+	/**
+	 * @return the locationLong
+	 */
+	public String getLocationLong()
+	{
+		return locationLong;
+	}
+
+	/**
+	 * @return the locationLat
+	 */
+	public String getLocationLat()
+	{
+		return locationLat;
+	}
+
+	/**
+	 * @return the dateStarted
+	 */
+	public String getDateStarted()
+	{
+		return dateStarted;
+	}
+
+	/**
+	 * @return the datEnded
+	 */
+	public String getDatEnded()
+	{
+		return datEnded;
+	}
+
+	/**
+	 * @param locationName the locationName to set
+	 */
+	public void setLocationName(String locationName)
+	{
+		this.locationName = locationName;
+	}
+
+	/**
+	 * @param locationLong the locationLong to set
+	 */
+	public void setLocationLong(String locationLong)
+	{
+		this.locationLong = locationLong;
+	}
+
+	/**
+	 * @param locationLat the locationLat to set
+	 */
+	public void setLocationLat(String locationLat)
+	{
+		this.locationLat = locationLat;
+	}
+
+	/**
+	 * @param dateStarted the dateStarted to set
+	 */
+	public void setDateStarted(String dateStarted)
+	{
+		this.dateStarted = dateStarted;
+	}
+
+	/**
+	 * @param datEnded the datEnded to set
+	 */
+	public void setDatEnded(String datEnded)
+	{
+		this.datEnded = datEnded;
+	}
+
+	
 	
 	
 	
