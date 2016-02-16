@@ -118,7 +118,7 @@ public class Location
 	@Override
 	public String toString()
 	{
-		return "location [id=" + id + ", trip_id=" + trip_id + "]";
+		return "location ";
 	}
 
 	/**
@@ -201,8 +201,7 @@ public class Location
 		this.datEnded = datEnded;
 	}
 
-	
-	
+
 	
 	
 	

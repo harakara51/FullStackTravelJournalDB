@@ -14,18 +14,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name = "users")
-@NamedQueries({
-@NamedQuery(name = "User.getUserByName", query =
-		"select u from User u where u.username= :name"),
-@NamedQuery(name = "User.getUserByPassword", query =
-		"select u from User u where u.password =:password"),
-@NamedQuery(name = "User.getALLUSER", query =
-		"select u from User u ")
-})
+@NamedQueries(
+{ @NamedQuery(name = "User.getUserByName", query = "select u from User u where u.username= :name"),
+		@NamedQuery(name = "User.getUserByPassword", query = "select u from User u where u.password =:password"),
+		@NamedQuery(name = "User.getALLUSER", query = "select u from User u ") })
 public class User
 {
 	@Id
@@ -35,43 +29,41 @@ public class User
 	private String email;
 	private String password;
 	private Boolean is_admin;
-	
-	@OneToMany(mappedBy = "user_id", fetch = FetchType.EAGER, cascade = CascadeType.ALL)	
+
+	@OneToMany(mappedBy = "user_id", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Trip> Trips = new ArrayList<Trip>();
-	
-	
+
 	public User()
 	{
-	
-		
+
 	}
-	public User(String username, String password, String email) 
+	public User(String username, String password, String email)
 	{
 		super();
-		
+
 		this.username = username;
 		this.email = email;
 		this.password = password;
 	}
-	public User(int id, String username,String password, String email)
-	{
-		super();
-		this.id = id;
-		this.username = username;
-		this.email = email;
-		this.password = password;
-	}
-	
-	public User(String username,String password, String email, Boolean isAdmin)
+	public User(int id, String username, String password, String email)
 	{
 		super();
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
-		this.is_admin= isAdmin;
 	}
-	
+
+	public User(String username, String password, String email, Boolean isAdmin)
+	{
+		super();
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.is_admin = isAdmin;
+	}
+
 	/**
 	 * @return the id
 	 */
@@ -101,27 +93,32 @@ public class User
 		return password;
 	}
 	/**
-	 * @param username the username to set
+	 * @param username
+	 *            the username to set
 	 */
 	public void setUsername(String username)
 	{
 		this.username = username;
 	}
 	/**
-	 * @param email the email to set
+	 * @param email
+	 *            the email to set
 	 */
 	public void setEmail(String email)
 	{
 		this.email = email;
 	}
 	/**
-	 * @param password the password to set
+	 * @param password
+	 *            the password to set
 	 */
 	public void setPassword(String password)
 	{
 		this.password = password;
 	}
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -137,7 +134,8 @@ public class User
 		return Trips;
 	}
 	/**
-	 * @param trips the trips to set
+	 * @param trips
+	 *            the trips to set
 	 */
 	public void setTrips(Trip trips)
 	{
@@ -151,15 +149,27 @@ public class User
 		return is_admin;
 	}
 	/**
-	 * @param is_admin the is_admin to set
+	 * @param is_admin
+	 *            the is_admin to set
 	 */
 	public void setIs_admin(Boolean is_admin)
 	{
 		this.is_admin = is_admin;
 	}
+	public void addTrip(Trip trip)
+	{
+		if (!getTrips().contains(trip))
+		{
+			getTrips().add(trip);
+		}
+	}
+	public void removeTrip(Trip trip)
+	{
+		if (getTrips().contains(trip))
+		{
+			getTrips().remove(trip);
 
-	
-	
-	
+		}
+	}
 
 }

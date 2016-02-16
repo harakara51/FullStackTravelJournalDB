@@ -18,34 +18,32 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "trip")
-@NamedQueries({
-@NamedQuery(name = "Trip.getTripById", query =
-		"select T from Trip T where T.id= :id")
-})
+@NamedQueries(
+{ @NamedQuery(name = "Trip.getTripById", query = "select T from Trip T where T.id= :id") })
 public class Trip
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
-	 @JoinColumn(name = "user_id", nullable = false)
+	@JoinColumn(name = "user_id", nullable = false)
 
 	private User user_id;
 	@OneToMany(mappedBy = "trip_id", cascade = CascadeType.ALL)
 	private Collection<Location> Locations;
 	private String trip_name;
 	private String date_started;
-	private String date_ended; 
-	
+	private String date_ended;
+
 	public Trip()
 	{
-		
+
 	}
 
-	public Trip( User user_id)
+	public Trip(User user_id)
 	{
-		
+
 		this.user_id = user_id;
 	}
 	public Trip(int id, User user_id)
@@ -53,7 +51,7 @@ public class Trip
 		this.id = id;
 		this.user_id = user_id;
 	}
-	
+
 	public Trip(User user_id, String trip_name, String date_started, String date_ended)
 	{
 		super();
@@ -62,7 +60,6 @@ public class Trip
 		this.date_started = date_started;
 		this.date_ended = date_ended;
 	}
-	
 
 	/**
 	 * @return the id
@@ -81,17 +78,19 @@ public class Trip
 	}
 
 	/**
-	 * @param user_id the user_id to set
+	 * @param user_id
+	 *            the user_id to set
 	 */
 	public void setUser_id(User user_id)
 	{
 		this.user_id = user_id;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
-
 
 	/**
 	 * @return the trip_name
@@ -118,7 +117,8 @@ public class Trip
 	}
 
 	/**
-	 * @param trip_name the trip_name to set
+	 * @param trip_name
+	 *            the trip_name to set
 	 */
 	public void setTrip_name(String trip_name)
 	{
@@ -126,7 +126,8 @@ public class Trip
 	}
 
 	/**
-	 * @param date_started the date_started to set
+	 * @param date_started
+	 *            the date_started to set
 	 */
 	public void setDate_started(String date_started)
 	{
@@ -134,7 +135,8 @@ public class Trip
 	}
 
 	/**
-	 * @param date_ended the date_ended to set
+	 * @param date_ended
+	 *            the date_ended to set
 	 */
 	public void setDate_ended(String date_ended)
 	{
@@ -150,14 +152,17 @@ public class Trip
 	}
 
 	/**
-	 * @param locations the locations to set
+	 * @param locations
+	 *            the locations to set
 	 */
 	public void setLocations(Collection<Location> locations)
 	{
 		Locations = locations;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -167,10 +172,21 @@ public class Trip
 				+ ", date_started=" + date_started + ", date_ended=" + date_ended + "]";
 	}
 
+	public void addLocation(Location location)
+	{
+		
+		if (!getLocations().contains(location))
+		{
+			getLocations().add(location);
+		}
+	}
+	public void removeLocation(Location location)
+	{
+		if (getLocations().contains(location))
+		{
+			getLocations().remove(location);
 
-	
-	
-	
-	
-	
+		}
+	}
+
 }
