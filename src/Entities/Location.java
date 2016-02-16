@@ -9,13 +9,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "location")
+@NamedQueries({
+@NamedQuery(name = "Location.getLocationById", query =
+		"select L from Location L where L.id= :id"),
+@NamedQuery(name = "Location.deleteLocationById", query =
+		"delete from Location L where L.id = :id")
+})
 public class Location
 {
 	@Id
@@ -41,10 +47,8 @@ public class Location
 	
 	@Column (name ="location_name")
 	private String locationName;
-	@Column (name ="location_long")
-	private String locationLong;
-	@Column (name ="location_lat")
-	private String locationLat;
+	private String city;
+	private String country;
 //	 @Temporal(TemporalType.DATE)
 	@Column (name ="date_started")
 	private String dateStarted;
@@ -73,11 +77,13 @@ public class Location
 		this.datEnded = datEnded;
 	}
 	
-	public Location(Trip trip_id, String locationName, String dateStarted, String datEnded)
+	public Location(Trip trip_id, String locationName, String country, String city, String dateStarted, String datEnded)
 	{
 	
 		this.trip_id = trip_id;
 		this.locationName = locationName;
+		this.city = city;
+		this.country= country;
 		this.dateStarted = dateStarted;
 		this.datEnded = datEnded;
 	}
@@ -126,17 +132,17 @@ public class Location
 	/**
 	 * @return the locationLong
 	 */
-	public String getLocationLong()
+	public String getCity()
 	{
-		return locationLong;
+		return city;
 	}
 
 	/**
 	 * @return the locationLat
 	 */
-	public String getLocationLat()
+	public String getCountry()
 	{
-		return locationLat;
+		return country;
 	}
 
 	/**
@@ -166,17 +172,17 @@ public class Location
 	/**
 	 * @param locationLong the locationLong to set
 	 */
-	public void setLocationLong(String locationLong)
+	public void setCity(String city)
 	{
-		this.locationLong = locationLong;
+		this.city = city;
 	}
 
 	/**
 	 * @param locationLat the locationLat to set
 	 */
-	public void setLocationLat(String locationLat)
+	public void setCountry(String country)
 	{
-		this.locationLat = locationLat;
+		this.country = country;
 	}
 
 	/**

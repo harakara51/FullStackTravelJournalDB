@@ -1,11 +1,11 @@
 package Entities;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,7 +35,8 @@ public class User
 	private String email;
 	private String password;
 	private Boolean is_admin;
-	@OneToMany(mappedBy = "user_id")
+	
+	@OneToMany(mappedBy = "user_id", fetch = FetchType.EAGER, cascade = CascadeType.ALL)	
 	private List<Trip> Trips = new ArrayList<Trip>();
 	
 	

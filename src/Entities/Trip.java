@@ -2,27 +2,37 @@ package Entities;
 
 import java.util.Collection;
 
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "trip")
+@NamedQueries({
+@NamedQuery(name = "Trip.getTripById", query =
+		"select T from Trip T where T.id= :id")
+})
 public class Trip
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	 @JoinColumn(name = "user_id", nullable = false)
+
 	private User user_id;
-	@OneToMany(mappedBy = "trip_id")
+	@OneToMany(mappedBy = "trip_id", cascade = CascadeType.ALL)
 	private Collection<Location> Locations;
 	private String trip_name;
 	private String date_started;
@@ -81,11 +91,7 @@ public class Trip
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
-	@Override
-	public String toString()
-	{
-		return "trip [id=" + id + ", user_id=" + user_id + "]";
-	}
+
 
 	/**
 	 * @return the trip_name
@@ -149,6 +155,16 @@ public class Trip
 	public void setLocations(Collection<Location> locations)
 	{
 		Locations = locations;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString()
+	{
+		return "Trip [id=" + id + ", user_id=" + user_id + ", Locations=" + Locations + ", trip_name=" + trip_name
+				+ ", date_started=" + date_started + ", date_ended=" + date_ended + "]";
 	}
 
 
