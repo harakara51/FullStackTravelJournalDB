@@ -34,6 +34,13 @@ public class Image
 		this.img_src = img_src;
 		this.img_text = img_text;
 	}
+	public Image(Location location_id, String img_src, String img_text)
+	{
+		super();
+		this.location_id = location_id;
+		this.img_src = img_src;
+		this.img_text = img_text;
+	}
 
 	/**
 	 * @return the id

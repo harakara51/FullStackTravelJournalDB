@@ -201,8 +201,137 @@ public class Location
 		this.datEnded = datEnded;
 	}
 
+	/**
+	 * @return the audios
+	 */
+	public Collection<Audio> getAudios()
+	{
+		return Audios;
+	}
+
+	/**
+	 * @return the images
+	 */
+	public Collection<Image> getImages()
+	{
+		return Images;
+	}
+
+	/**
+	 * @return the videos
+	 */
+	public Collection<Video> getVideos()
+	{
+		return Videos;
+	}
+
+	/**
+	 * @return the texts
+	 */
+	public Collection<Text> getTexts()
+	{
+		return Texts;
+	}
+
+	/**
+	 * @param audios the audios to set
+	 */
+	public void setAudios(Collection<Audio> audios)
+	{
+		Audios = audios;
+	}
+
+	/**
+	 * @param images the images to set
+	 */
+	public void setImages(Collection<Image> images)
+	{
+		Images = images;
+	}
+
+	/**
+	 * @param videos the videos to set
+	 */
+	public void setVideos(Collection<Video> videos)
+	{
+		Videos = videos;
+	}
+
+	/**
+	 * @param texts the texts to set
+	 */
+	public void setTexts(Collection<Text> texts)
+	{
+		Texts = texts;
+	}
 
 	
+	public void addImages(Image image)
+	{
+		
+		if (!getImages().contains(image))
+		{
+			getImages().add(image);
+		}
+	}
+	public void removeImages(Image image)
+	{
+		if (getImages().contains(image))
+		{
+			getImages().remove(image);
+
+		}
+	}
+	
+	public void addVideo(Video video)
+	{
+		
+		if (!getVideos().contains(video))
+		{
+			getVideos().add(video);
+		}
+	}
+	public void removeVideo(Image image)
+	{
+		if (getImages().contains(image))
+		{
+			getImages().remove(image);
+
+		}
+	}
+	public void addAudio(Audio audio)
+	{
+		
+		if (!getAudios().contains(audio))
+		{
+			getAudios().add(audio);
+		}
+	}
+	public void removeAudio(Image audio)
+	{
+		if (getAudios().contains(audio))
+		{
+			getAudios().remove(audio);
+
+		}
+	}
+	
+	public void addText(Text text)
+	{
+		
+		if (!getTexts().contains(text))
+		{
+			getTexts().add(text);
+		}
+	}
+	public void removeTexts(Text text)
+	{
+		if (getTexts().contains(text))
+		{
+			getTexts().remove(text);
+
+		}
+	}
 	
 	
  

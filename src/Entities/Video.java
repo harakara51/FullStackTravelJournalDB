@@ -34,6 +34,13 @@ public class Video
 		this.video_src = video_src;
 		this.video_text = video_text;
 	}
+	public Video(Location location_id, String video_src, String video_text)
+	{
+		super();
+		this.location_id = location_id;
+		this.video_src = video_src;
+		this.video_text = video_text;
+	}
 	/**
 	 * @return the id
 	 */

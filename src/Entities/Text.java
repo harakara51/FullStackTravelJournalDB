@@ -32,6 +32,12 @@ public class Text
 		this.location_id = location_id;
 		this.bigtext = bigtext;
 	}
+	public Text(Location location_id, String bigtext)
+	{
+		
+		this.location_id = location_id;
+		this.bigtext = bigtext;
+	}
 
 	/**
 	 * @return the id

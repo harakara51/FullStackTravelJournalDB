@@ -34,6 +34,13 @@ public class Audio
 		this.audio_src = audio_src;
 		this.audio_text = audio_text;
 	}
+	public Audio(Location location_id, String audio_src, String audio_text)
+	{
+		super();
+		this.location_id = location_id;
+		this.audio_src = audio_src;
+		this.audio_text = audio_text;
+	}
 
 	/**
 	 * @return the id
