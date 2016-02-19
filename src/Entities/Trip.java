@@ -1,5 +1,6 @@
 package Entities;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Basic;
@@ -31,7 +32,7 @@ public class Trip
 
 	private User user_id;
 	@OneToMany(mappedBy = "trip_id", cascade = CascadeType.ALL)
-	private Collection<Location> Locations;
+	private ArrayList<Location> Locations = new ArrayList<Location>();
 	private String trip_name;
 	private String date_started;
 	private String date_ended;
@@ -146,7 +147,7 @@ public class Trip
 	/**
 	 * @return the locations
 	 */
-	public Collection<Location> getLocations()
+	public ArrayList<Location> getLocations()
 	{
 		return Locations;
 	}
@@ -155,7 +156,7 @@ public class Trip
 	 * @param locations
 	 *            the locations to set
 	 */
-	public void setLocations(Collection<Location> locations)
+	public void setLocations(ArrayList<Location> locations)
 	{
 		Locations = locations;
 	}

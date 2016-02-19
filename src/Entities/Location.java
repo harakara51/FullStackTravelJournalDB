@@ -1,7 +1,9 @@
 package Entities;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,19 +32,19 @@ public class Location
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "trip_id", nullable = false)
 	private Trip trip_id;
-	@OneToMany(mappedBy = "location_id")
+	@OneToMany(mappedBy = "location_id",cascade = CascadeType.ALL )
 	private Collection<Audio> Audios;
 	
-	@OneToMany(mappedBy = "location_id")
-	private Collection<Image> Images;
+	@OneToMany(mappedBy = "location_id", cascade = CascadeType.ALL)
+	private ArrayList<Image> Images = new ArrayList<Image>();
 	
-	@OneToMany(mappedBy = "location_id")
+	@OneToMany(mappedBy = "location_id", cascade = CascadeType.ALL)
 	private Collection<Video> Videos;
 	
-	@OneToMany(mappedBy = "location_id")
+	@OneToMany(mappedBy = "location_id", cascade = CascadeType.ALL)
 	private Collection<Text> Texts;
 	
-	@OneToMany(mappedBy = "location_id")
+	@OneToMany(mappedBy = "location_id", cascade = CascadeType.ALL)
 	private Collection<CountryLogo> CountryLogos;
 	
 	@Column (name ="location_name")
@@ -77,7 +79,7 @@ public class Location
 		this.datEnded = datEnded;
 	}
 	
-	public Location(Trip trip_id, String locationName, String country, String city, String dateStarted, String datEnded)
+	public Location(Trip trip_id, String locationName, String city, String country,String dateStarted, String datEnded)
 	{
 	
 		this.trip_id = trip_id;
@@ -118,7 +120,8 @@ public class Location
 	@Override
 	public String toString()
 	{
-		return "location ";
+		String s = country + " " + city + " ";
+		return s;
 	}
 
 	/**
@@ -212,7 +215,7 @@ public class Location
 	/**
 	 * @return the images
 	 */
-	public Collection<Image> getImages()
+	public ArrayList<Image> getImages()
 	{
 		return Images;
 	}
@@ -244,7 +247,7 @@ public class Location
 	/**
 	 * @param images the images to set
 	 */
-	public void setImages(Collection<Image> images)
+	public void setImages(ArrayList<Image> images)
 	{
 		Images = images;
 	}
@@ -268,11 +271,18 @@ public class Location
 	
 	public void addImages(Image image)
 	{
+		System.out.println(image);
+		
+		
 		
 		if (!getImages().contains(image))
 		{
 			getImages().add(image);
+			
+			
 		}
+		
+		
 	}
 	public void removeImages(Image image)
 	{
@@ -332,6 +342,8 @@ public class Location
 
 		}
 	}
+	
+
 	
 	
  
